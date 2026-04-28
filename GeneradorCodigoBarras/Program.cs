@@ -18,7 +18,7 @@ namespace GeneradorCodigoBarras
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             ApplicationConfiguration.Initialize();
 
-            // 🔹 Cargar configuración
+            //Cargar configuración
             var config = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
