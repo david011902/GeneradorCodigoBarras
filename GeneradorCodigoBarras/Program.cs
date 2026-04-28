@@ -1,3 +1,10 @@
+using GeneradorCodigoBarras.Services;
+using GeneradorCodigoBarras.Services.IServices;
+using GeneradorCodigoBarras.Views;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Text;
+using System.Windows.Forms;
 namespace GeneradorCodigoBarras
 {
     internal static class Program
@@ -8,10 +15,19 @@ namespace GeneradorCodigoBarras
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            // 🔹 Cargar configuración
+            var config = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
+
+            string baseUrl = config["ApiSettings:BaseUrl"];
+
+            IApiService apiService = new ApiService(baseUrl);
+            Application.Run(new Form1(apiService));
         }
     }
 }
