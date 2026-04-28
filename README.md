@@ -63,7 +63,7 @@ O directamente desde Visual Studio: **F5** / `Ctrl+F5`.
  
 ---
  
-## 🔄 Flujo de trabajo
+## Flujo de trabajo
  
 ```
 Inicio
@@ -78,8 +78,9 @@ Inicio
  
  
 ## Proyecto relacionado
- 
+ ```
 Este generador es un complemento del **Sistema Gestor de Inventario** cuyo backend es una ASP.NET Core Web API desplegada en Azure.
+```
 ---
 ## Autor
 **David Acosta**  
